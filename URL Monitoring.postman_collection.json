@@ -250,31 +250,19 @@
 			"item": [
 				{
 					"name": "Get Reports by tag",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2M2U1MTlmN2Y4ZjgzZGNlNmNlYzhlN2IiLCJuYW1lIjoibWVkbyIsInBhc3N3b3JkIjoiJDJhJDEwJHhUbmVNYURIbllpRG0uWGsyVUNtN2VWL1pVQjlURXMzRUZkTWtUTC4vbmdvaUNvakovYTNtIiwiaWF0IjoxNjc1OTU5MzcwfQ.o9gw4ZM8WPyk7RGXPY9AjpmUyQhQ-pbvkDoqXUAtvOk",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2M2U1MzQyMmExMTNlZjBkNTBhMWU4MzciLCJuYW1lIjoibWVkbyIsInBhc3N3b3JkIjoiJDJhJDEwJEEzcjEwdTdMaUE2MVJlQi9Lb1RIME8wbk9ha01Sb3pSbkREeGVaWlVGZmR5SE5SZmxCeTVDIiwiaWF0IjoxNjc1OTY1NDk0fQ.hAhoURlgAyL47A077PAV2GsjusjMMeDGcm6pDJvr97w",
 									"type": "string"
 								}
 							]
 						},
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"medo\",\r\n    \"email\":\"mohamedakram153@gmail.com\",\r\n    \"password\":\"124\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
 							"raw": "http://localhost:5000/api/tags/nnn",
 							"protocol": "http",
