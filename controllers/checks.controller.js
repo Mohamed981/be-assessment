@@ -37,17 +37,13 @@ createCheck = async (req, res) => {
 };
 
 getChecks = async (req, res) => {
-  const checks = await Check.find({});
+  const checks = await Check.find({userid:req.userid});
   res.send(checks);
 };
 getCheckById = async (req, res) => {
   const check = await Check.findById(req.params.checkid);
   res.send({ status: "ok", message: check });
 };
-// getCheckByTag = async (req, res) => {
-//   const checks = await Check.find({ tags: { $all: [req.params.tag] } });
-//   return res.send({ status: "ok", message: checks });
-// };
 
 updateCheck = async (req, res) => {
   await Check.findOneAndUpdate(
@@ -66,7 +62,6 @@ deleteCheck = async (req, res) => {
 module.exports = {
   getChecks,
   getCheckById,
-  // getCheckByTag,
   createCheck,
   updateCheck,
   deleteCheck,

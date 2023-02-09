@@ -10,7 +10,7 @@ const jwtSign = (params) => {
     process.env.SECRET
   );
 };
-const jwtDecode = async (req, res, next) => {
+const verifyToken = async (req, res, next) => {
   try {
     const token = req.headers.authorization;
     if (!token) throw "UNAUTHORIZED";
@@ -21,4 +21,4 @@ const jwtDecode = async (req, res, next) => {
     return res.send({ error: "UNAUTHORIZED" });
   }
 };
-module.exports = { jwtSign, jwtDecode };
+module.exports = { jwtSign, verifyToken };

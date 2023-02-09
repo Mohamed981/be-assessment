@@ -2,23 +2,32 @@ const Report = require("../models/report.model");
 const Check = require("../models/check.model");
 
 const getReports = async (req, res) => {
-  const reports = await Report.find({});
-  res.send(reports);
+  const checks = await Check.find(
+    { userid: req.userid },
+    { _id: 1 }
+  );
+  let Reports = [];
+  for (let i = 0; i < checks.length; i++) {
+    let report = await Report.findOne({
+      checkid: checks[i]._id,
+    });
+    await Reports.push(report);
+  }
+  return res.send({ status: "ok", message: Reports });
 };
 
 const getReportsByTag = async (req, res) => {
   const checks = await Check.find(
-    { tags: { $all: [req.params.tag] } },
+    { tags: { $all: [req.params.tag] }, userid: req.userid },
     { _id: 1 }
   );
   let Reports = [];
-  await checks.map(async (check) => {
+  for (let i = 0; i < checks.length; i++) {
     let report = await Report.findOne({
-      checkid: check._id,
+      checkid: checks[i]._id,
     });
-    console.log(Reports);
     await Reports.push(report);
-  });
+  }
   return res.send({ status: "ok", message: Reports });
 };
 module.exports = { getReports, getReportsByTag };

@@ -16,7 +16,8 @@ register = async (req, res) => {
       password: newPassword,
       verificationCode: verificationCode,
     });
-    res.send(nodemailer(req.body.email, verificationCode));
+    const mailer = await nodemailer(req.body.email, verificationCode);
+    res.send({ "Code Sent To": mailer });
   } catch (err) {
     res.json({ status: "error", error: "Duplicate email" });
   }
@@ -36,10 +37,14 @@ const login = async (req, res) => {
   );
 
   if (isPasswordValid) {
-    const token = jwtService.jwtSign(user._id);
-    return res.json({ status: "ok", user: token });
+    const token = jwtService.jwtSign({
+      id: user._id,
+      name: user.name,
+      password: user.password,
+    });
+    return res.json({ status: "ok", token: token });
   } else {
-    return res.json({ status: "error", user: false });
+    return res.json({ status: "error", token: false });
   }
 };
 

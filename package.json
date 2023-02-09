@@ -33,7 +33,6 @@
     "nodemon": "^2.0.20",
     "swagger-jsdoc": "^6.2.8",
     "swagger-routes-express": "^3.3.2",
-    "swagger-ui-express": "^3.0.3",
     "yamljs": "^0.3.0"
   }
 }
