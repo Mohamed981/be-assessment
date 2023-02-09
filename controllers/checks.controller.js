@@ -1,6 +1,5 @@
 const Check = require("../models/check.model");
 const Report = require("../models/report.model");
-const axios = require("../utils/axios");
 const cronService = require("../services/cron.service");
 
 createCheck = async (req, res) => {
@@ -37,25 +36,42 @@ createCheck = async (req, res) => {
 };
 
 getChecks = async (req, res) => {
-  const checks = await Check.find({userid:req.userid});
+  const checks = await Check.find({ userid: req.userid });
   res.send(checks);
 };
+
 getCheckById = async (req, res) => {
   const check = await Check.findById(req.params.checkid);
   res.send({ status: "ok", message: check });
 };
 
 updateCheck = async (req, res) => {
+  if (req.body.name !== undefined) {
+    const check = await Check.find({
+      name: req.body.name,
+      _id: { $ne: req.params.checkid },
+    });
+    if (check)
+      return res.send({
+        status: "error",
+        message: "There is a check with the same name",
+      });
+  }
+
   await Check.findOneAndUpdate(
     { _id: req.params.checkid },
     { $set: { ...req.body } }
   );
+  const updatedCheck = await Check.findById(req.params.checkid);
+  cronService.removeCheck(req.params.checkid);
+  cronService.addCheck(updatedCheck);
   res.send({ status: "ok", message: "Check Updated" });
 };
+
 deleteCheck = async (req, res) => {
-  cronService.removeCheck(req.params.checkid);
   await Check.deleteOne({ _id: req.params.checkid });
   await Report.deleteOne({ checkid: req.params.checkid });
+  cronService.removeCheck(req.params.checkid);
   return res.send({ status: "ok", mesage: "Check deleted" });
 };
 
