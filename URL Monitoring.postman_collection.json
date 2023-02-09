@@ -1,0 +1,297 @@
+{
+	"info": {
+		"_postman_id": "9e7c85f0-930c-4b26-b18e-fcc47bea8251",
+		"name": "URL Monitoring",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"medo\",\r\n    \"email\":\"medo@gmail.com\",\r\n    \"password\":\"124\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"medo@gmail.com\",\r\n    \"verificationCode\":\"4340\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/auth/verify",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"verify"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"medo@gmail.com\",\r\n    \"password\":\"124\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Checks",
+			"item": [
+				{
+					"name": "Post Check",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2M2U1MTlmN2Y4ZjgzZGNlNmNlYzhlN2IiLCJuYW1lIjoibWVkbyIsInBhc3N3b3JkIjoiJDJhJDEwJHhUbmVNYURIbllpRG0uWGsyVUNtN2VWL1pVQjlURXMzRUZkTWtUTC4vbmdvaUNvakovYTNtIiwiaWF0IjoxNjc1OTU5MDkzfQ.pC5iejd5jF_So-zy7xbVgi3PkhfedB0UytQE1pmC-cg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"shop\",\r\n    \"protocol\":\"https\",\r\n    \"url\":\"https://shop-vs6n.onrender.com\",\r\n    \"threshold\":1,\r\n    \"ignoreSSL\":false,\r\n    \"authentication\":{\r\n        \"username\":\"medo\",\r\n        \"password\":\"123\"\r\n    },\r\n    \"interval\":2,\r\n    \"tags\":[\"nnn\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/checks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"checks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Checks",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2M2U1MTlmN2Y4ZjgzZGNlNmNlYzhlN2IiLCJuYW1lIjoibWVkbyIsInBhc3N3b3JkIjoiJDJhJDEwJHhUbmVNYURIbllpRG0uWGsyVUNtN2VWL1pVQjlURXMzRUZkTWtUTC4vbmdvaUNvakovYTNtIiwiaWF0IjoxNjc1OTU5MzcwfQ.o9gw4ZM8WPyk7RGXPY9AjpmUyQhQ-pbvkDoqXUAtvOk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/checks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"checks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Check",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2M2RlZTBkMjJmYjY2YjM3Y2FhZTlhN2IiLCJpYXQiOjE2NzU4NTY0NDR9.cRQAxxlgiQP_QWvANZnoscnP4BG5tznI1w7ATYbUkqc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/checks/63e4edaa7c8ad3e2bd657148",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"checks",
+								"63e4edaa7c8ad3e2bd657148"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Check",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2M2RlZTBkMjJmYjY2YjM3Y2FhZTlhN2IiLCJpYXQiOjE2NzU4NTY0NDR9.cRQAxxlgiQP_QWvANZnoscnP4BG5tznI1w7ATYbUkqc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"check\",\r\n    \"protocol\":\"http\",\r\n    \"url\":\"222.sdsa.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/checks/63e38e4e1faa3b7f09888b6c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"checks",
+								"63e38e4e1faa3b7f09888b6c"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reports",
+			"item": [
+				{
+					"name": "Get Reports by tag",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2M2U1MTlmN2Y4ZjgzZGNlNmNlYzhlN2IiLCJuYW1lIjoibWVkbyIsInBhc3N3b3JkIjoiJDJhJDEwJHhUbmVNYURIbllpRG0uWGsyVUNtN2VWL1pVQjlURXMzRUZkTWtUTC4vbmdvaUNvakovYTNtIiwiaWF0IjoxNjc1OTU5MzcwfQ.o9gw4ZM8WPyk7RGXPY9AjpmUyQhQ-pbvkDoqXUAtvOk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"medo\",\r\n    \"email\":\"mohamedakram153@gmail.com\",\r\n    \"password\":\"124\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/tags/nnn",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tags",
+								"nnn"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
